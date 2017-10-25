@@ -31,3 +31,12 @@ pups_data = read_csv("./FAS_pups.csv") %>%
   separate(landmark, into = c("remove", "landmark"), sep = "_") %>% 
   select(-remove)
 ```
+
+The collaborator will create a plot showing the distribution of post-natal days for each developmental landmark.
+```{r}
+library(ggridges)
+pups_data %>% 
+  ggplot(aes(x=PD_outcome,y=landmark)) +
+    geom_density_ridges(scale=.85)
+```
+The ridges plot shows the distributions of post-natal days for the four developmental landmark: ears, eyes, pivot, walk. We see from the plot that the newborns develop their eyes first, in about 4 days, and the development of eyes is the slowest, in about 13 days.
