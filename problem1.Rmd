@@ -1,11 +1,8 @@
 ---
-title: "p8105_hw4_yy2828"
+title: "Problem 1"
 name: "Yangwei Yan"
 date: "10/25/2017"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -22,7 +19,7 @@ rm(list = ls())
 options(tibble.print_min = 5)
 ```
 
-Read in the pups dataset. The post-natal days for each developmental landmarks are stored in variable "PD_outcome".
+Read in the pups dataset. The post-natal days for each developmental landmarks are stored in variable "PD_outcome". 
 
 ```{r}
 pups_data = read_csv("./FAS_pups.csv") %>%
@@ -32,15 +29,18 @@ pups_data = read_csv("./FAS_pups.csv") %>%
   select(-remove)
 ```
 
-<<<<<<< HEAD
+The dataset contains `r count(distinct(pups_data, litter_number))` subjects of 3 variables including sex, the developmental landmark and its corresponding post-natal days.
 
 =======
+
 The collaborator will create a plot showing the distribution of post-natal days for each developmental landmark.
-```{r}
+
+```{r message=FALSE, warning=FALSE}
 library(ggridges)
 pups_data %>% 
   ggplot(aes(x=PD_outcome,y=landmark)) +
     geom_density_ridges(scale=.85)
 ```
+
 The ridges plot shows the distributions of post-natal days for the four developmental landmark: ears, eyes, pivot, walk. We see from the plot that the newborns develop their eyes first, in about 4 days, and the development of eyes is the slowest, in about 13 days.
->>>>>>> d6303a830a5ebd4a4160e5513ba74cf1dc948e9d
+
